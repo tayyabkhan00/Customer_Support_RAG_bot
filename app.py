@@ -187,19 +187,27 @@ Answer format:
 - Sources
 """
     )
+# ----------------------------
+# 🔧 Helper: Format Retrieved Docs  ← STEP 1 GOES HERE
+# ----------------------------
+def format_docs(docs):
+    return "\n\n".join(
+        f"Source: {d.metadata.get('source', 'unknown')}\nContent: {d.page_content}"
+        for d in docs
+    )
 
     # ----------------------------
     # 7️⃣ RAG Chain
     # ----------------------------
     rag_chain = (
         {
-            "context": retriever,
+            "context": retriever | format_docs,
             "question": RunnablePassthrough()
         }
         | prompt
         | llm
         | StrOutputParser()
-    )
+     )
 
     # ----------------------------
     # 8️⃣ Ask Question
