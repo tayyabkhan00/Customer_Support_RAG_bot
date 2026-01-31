@@ -137,15 +137,13 @@ if uploaded_files:
 # 3️⃣ Text Splitting
 # ----------------------------
 if documents:
+
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=80
     )
     chunks = splitter.split_documents(documents)
 
-    # ----------------------------
-    # 4️⃣ Embeddings + Vector Store
-    # ----------------------------
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/text-embedding-004"
     )
@@ -156,17 +154,11 @@ if documents:
         search_kwargs={"k": 3}
     )
 
-    # ----------------------------
-    # 5️⃣ Gemini LLM
-    # ----------------------------
     llm = ChatGoogleGenerativeAI(
-    model="models/gemini-flash-latest",
-    temperature=0.2,
+        model="models/gemini-flash-latest",
+        temperature=0.2,
     )
 
-    # ----------------------------
-    # 6️⃣ Prompt with Source Citations
-    # ----------------------------
     prompt = PromptTemplate(
         input_variables=["context", "question"],
         template="""
@@ -187,18 +179,13 @@ Answer format:
 - Sources
 """
     )
-# ----------------------------
-# 🔧 Helper: Format Retrieved Docs  ← STEP 1 GOES HERE
-# ----------------------------
-def format_docs(docs):
-    return "\n\n".join(
-        f"Source: {d.metadata.get('source', 'unknown')}\nContent: {d.page_content}"
-        for d in docs
-    )
 
-    # ----------------------------
-    # 7️⃣ RAG Chain
-    # ----------------------------
+    def format_docs(docs):
+        return "\n\n".join(
+            f"Source: {d.metadata.get('source', 'unknown')}\nContent: {d.page_content}"
+            for d in docs
+        )
+
     rag_chain = (
         {
             "context": retriever | format_docs,
@@ -207,22 +194,20 @@ def format_docs(docs):
         | prompt
         | llm
         | StrOutputParser()
-     )
+    )
 
-    # ----------------------------
-    # 8️⃣ Ask Question
-    # ----------------------------
     if user_question:
         with st.spinner("Thinking..."):
             response = rag_chain.invoke(user_question)
+
         st.markdown("### ✅ Answer")
         st.write(response)
+
         if "I don't know" in response:
             st.warning(
                 "The uploaded documents do not contain this information. "
-                "Try uploading a valid customer support PDF from the sample sources above."
+                "Try uploading a valid customer support PDF."
             )
-
 
 else:
     st.info("Upload PDFs to initialize the knowledge base.")
