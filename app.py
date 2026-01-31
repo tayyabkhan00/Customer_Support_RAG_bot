@@ -162,7 +162,6 @@ if documents:
     llm = ChatGoogleGenerativeAI(
     model="models/gemini-flash-latest",
     temperature=0.2,
-    streaming=True
     )
 
     # ----------------------------
