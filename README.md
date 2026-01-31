@@ -3,6 +3,11 @@
 
 An end-to-end **Retrieval Augmented Generation (RAG)** based customer support chatbot that answers user queries from uploaded **customer support PDFs** (refunds, returns, policies, FAQs) using **Google Gemini**, **LangChain**, and **FAISS**.
 
+🚀 Live Demo
+
+🔗 Streamlit App:
+👉 []
+
 This project demonstrates how modern **GenAI systems are built in production**, focusing on:
 - Hallucination reduction
 - Context-grounded answers
