@@ -6,7 +6,7 @@ An end-to-end **Retrieval Augmented Generation (RAG)** based customer support ch
 🚀 Live Demo
 
 🔗 Streamlit App:
-👉 []
+👉 [https://customersupportragbot-cwcpwjupnqpu9caaaxmy3o.streamlit.app/]
 
 This project demonstrates how modern **GenAI systems are built in production**, focusing on:
 - Hallucination reduction
@@ -95,4 +95,45 @@ python -m venv venv
 source venv/bin/activate     # macOS / Linux
 venv\Scripts\activate        # Windows
 ```
+## 3️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+## 4️⃣ Set Gemini API Key
+```bash
+export GOOGLE_API_KEY="your_gemini_api_key"
+```
+(Windows)
+```bash
+set GOOGLE_API_KEY=your_gemini_api_key
+```
+## 5️⃣ Run the App
+```bash
+streamlit run app.py
+```
+## 📄 How It Works (Step-by-Step)
 
+- Upload PDFs (refund, return, policy documents)
+- PDFs are loaded and split into chunks
+- Each chunk is converted into vector embeddings
+- Embeddings are stored in FAISS vector database
+- User question is embedded and matched semantically
+- Relevant chunks are injected into the RAG prompt
+- Gemini generates a streaming, grounded response
+
+## 🧪 Example Questions
+
+- What is the return policy for electronic items?
+- How many days do I have to return a product?
+- How does the refund process work?
+- Are delivery charges refundable?
+- Which products are not eligible for returns?
+
+## 🔐 Hallucination Control
+
+The chatbot is strictly instructed to:
+
+- Answer only from retrieved document context
+- Respond with “I don’t know” if information is missing
+
+This makes it suitable for enterprise and customer-facing applications.
