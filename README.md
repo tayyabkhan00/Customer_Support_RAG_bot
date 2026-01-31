@@ -37,5 +37,50 @@ This project demonstrates how modern **GenAI systems are built in production**, 
 ---
 
 ## 🔁 Architecture (RAG Flow)
+```
+PDF Documents
+↓
+Text Chunking
+↓
+Gemini Embeddings
+↓
+FAISS Vector Store
+↓
+Retriever
+↓
+Prompt + Context
+↓
+Gemini LLM (Streaming)
+↓
+Answer + Sources
+```
 
+---
+
+## 📂 Project Structure
+
+```
+customer-support-rag-bot/
+│
+├── app.py # Main Streamlit application
+├── requirements.txt # Python dependencies
+├── README.md # Project documentation
+└── data/
+└── uploads/ # Uploaded PDF files
+```
+
+---
+
+## 🛠️ Setup Instructions (Run Locally)
+
+Follow these steps **exactly** to run the project on your system.
+
+---
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/tayyabkhan00/customer-support-rag-bot.git
+cd customer-support-rag-bot
+```
 
