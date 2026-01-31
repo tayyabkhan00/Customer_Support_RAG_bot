@@ -42,7 +42,7 @@ def add_bg_from_local(image_file):
 # 1️⃣ Streamlit UI
 # ----------------------------
 st.set_page_config(page_title="Customer Support RAG Bot")
-add_bg_from_local("assets/bg4.jpg")
+add_bg_from_local("assets/bg4.jpeg")
 st.title("🤖 Customer Support RAG Bot")
 
 # ----------------------------
