@@ -132,8 +132,42 @@ streamlit run app.py
 ## 🔐 Hallucination Control
 
 The chatbot is strictly instructed to:
-
 - Answer only from retrieved document context
 - Respond with “I don’t know” if information is missing
-
 This makes it suitable for enterprise and customer-facing applications.
+
+## 📈 Use Cases
+
+- Customer Support Automation
+- Policy & FAQ Assistant
+- E-commerce Helpdesk
+- Internal Company Knowledge Base
+- Document Question Answering
+
+## 🎯 Why This Project Matters
+
+This project demonstrates:
+- Practical GenAI application development
+- End-to-end RAG pipeline design
+- Real-world customer support use case
+- Modern LangChain architecture (LCEL)
+- Production-ready UI deployment
+It is suitable for entry-level GenAI / AI Engineer / Data Scientist roles.
+
+## 🚀 Future Enhancements
+
+- Chat history & memory
+- Source citations with page numbers
+- Role-based access
+- Multi-language support
+- Database-backed vector persistence
+
+## 👨‍💻 Author
+
+Tayyab Khan<br>
+BTech – AI & Data Science<br>
+Aspiring GenAI / Data Science Engineer
+
+**⭐ If You Like This Project**
+
+Give it a ⭐ on GitHub — it really helps!
