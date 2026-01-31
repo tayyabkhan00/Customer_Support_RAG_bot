@@ -16,9 +16,33 @@ from langchain_community.document_loaders import PyPDFLoader
 import streamlit as st
 
 # ----------------------------
+# 🎨 Background Image Helper
+# ----------------------------
+def add_bg_from_local(image_file):
+    import base64
+    with open(image_file, "rb") as image:
+        encoded = base64.b64encode(image.read()).decode()
+
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# ----------------------------
 # 1️⃣ Streamlit UI
 # ----------------------------
 st.set_page_config(page_title="Customer Support RAG Bot")
+add_bg_from_local("assets/bg4.jpg")
 st.title("🤖 Customer Support RAG Bot")
 
 # ----------------------------
