@@ -83,4 +83,11 @@ Follow these steps **exactly** to run the project on your system.
 git clone https://github.com/tayyabkhan00/customer-support-rag-bot.git
 cd customer-support-rag-bot
 ```
+## 2️⃣ Create a Virtual Environment (Recommended)
+
+```bash
+python -m venv venv
+source venv/bin/activate     # macOS / Linux
+venv\Scripts\activate        # Windows
+```
 
